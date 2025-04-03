@@ -1,5 +1,4 @@
 import 'package:flutter_proj/models/book_models.dart';
-import 'package:flutter_proj/pages/detail_page.dart';
 import 'package:flutter_proj/pages/home_page.dart';
 import 'package:flutter_proj/routes/route_enums.dart';
 import 'package:go_router/go_router.dart';
@@ -10,22 +9,15 @@ class AppRoutes{
     return GoRouter(
       initialLocation: '/',
         routes: [
-          GoRoute(
-        path:'/',
-      builder: (context,state){
-          return HomePage();
-      },
-            routes: [
-              GoRoute(
-                path: 'detail',
-                name: AppRoute.details.name,
-                builder: (context,state){
-                  return DetailPage(book: state.extra as Book,);
-                }
-              )
-            ],
-    ),
 
-    ]);
+          GoRoute(
+            path: '/',
+            pageBuilder: (context, state) {
+              return NoTransitionPage(child: HomePage());
+            }
+          )
+
+            ],
+    );
   }
 }

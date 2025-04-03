@@ -1,62 +1,62 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_proj/app_theme/app_sizes.dart';
-import 'package:flutter_proj/pages/widgets/book_list.dart';
-import 'package:flutter_proj/pages/widgets/carousel_widget.dart';
-import 'package:flutter_proj/pages/widgets/stack_widget.dart';
+import 'package:flutter_proj/providers/notifier_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_proj/providers/provider.dart';
+
+import '../providers/providers.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // var arrName = ['Study-Flutter','Practice-Dart','Leave Applause on the Article','Go TO School'];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hi John,'),
-        centerTitle: false,
-        // backgroundColor: Color(0xff8AB2A6),
-        // foregroundColor: Color(0xff443627),
-        actions: [
-          IconButton(
-            onPressed: () {
-              print('Hello Sanju');
-            },
-            icon: Icon(CupertinoIcons.search, color: Colors.black),
+        title: Text('Providers'),
+      ),
+      body: Column(
+        children: [
+          Text('This is Normal Provider',style: Theme.of(context).textTheme.headlineLarge,),
+          AppSizes.gapH14,
+          Consumer(
+            builder: (context,ref,child){
+              final someNumber = ref.watch(someVar);
+              return Text('$someNumber',style: Theme.of(context).textTheme.displayLarge,);
+            }
           ),
-          IconButton(
-            onPressed: () {
-              print('Hello Sanju');
-            },
-            icon: Icon(CupertinoIcons.bell_fill, color: Colors.black),
+          AppSizes.gapH20,
+          Consumer(
+            builder: (context,ref,child) {
+              final counter = ref.watch(counterProvider);
+              return Column(
+                children: [
+                  Text('$counter', style: Theme
+                      .of(context)
+                      .textTheme
+                      .headlineLarge,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () {
+                            ref.read(counterProvider.notifier).increment();
+                          }, child: Text('increment')),
+                      AppSizes.gapW10,
+                      ElevatedButton(
+                          onPressed: () {
+                            ref.read(counterProvider.notifier).decrement();
+                          }, child: Text('decrement')),
+                    ],
+                  )
+                ],
+              );
+            }
           ),
         ],
-      ),
-      // drawer: Drawer(
-      //   backgroundColor: Colors.pink,
-      //   child: Text('Deepak'),
-      // ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: ListView(
-          children: [
-
-            //StackWidget(),
-            AppSizes.gapH10,
-            ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(50),
-                bottomRight: Radius.circular(90),
-              ),
-              child: Image.asset('assets/images/sun-sets.jpg'),
-            ),
-            AppSizes.gapH20,
-            BookList(),
-            AppSizes.gapH20,
-            CarouselWidget(),
-          ],
-        ),
       ),
     );
   }
 }
+
