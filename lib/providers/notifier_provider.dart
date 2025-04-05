@@ -1,17 +1,18 @@
+import 'package:flutter_proj/models/todo.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CounterProvider extends Notifier<int> {
+class TodoProvider extends Notifier<List<Todo>>{
+  // List <Todo>
   @override
-  int build() {
-    return 0;
+ List<Todo> build() {
+    return [Todo.build('Deepak')];
+
   }
-  void increment() {
-    state++;
+
+  void addTodo(String todo){
+    state = [...state,Todo.build(todo)];
   }
-  void decrement() {
-    state--;
-  }
+
 }
-final counterProvider = NotifierProvider<CounterProvider, int>(
-  () => CounterProvider(),
-);
+
+final todoProvider = NotifierProvider<TodoProvider,List<Todo>>(() => TodoProvider());
