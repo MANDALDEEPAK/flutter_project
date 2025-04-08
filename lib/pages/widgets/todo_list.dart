@@ -8,19 +8,35 @@ class TodoList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final todoList = ref.watch(todoProvider);
-    print(todoList);
     return ListView.separated(
-          shrinkWrap: true,
-          itemBuilder: (context, index){
-            final todo = todoList[index];
-            return Card(
-              child: ListTile(
-                title: Text(todo.todo),
-              ),
-            );
-        },
-        separatorBuilder: (context, index) => Divider(),
-        itemCount: todoList.length,
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
+        final data = todoList[index];
+        return ListTile(
+          subtitle: CheckboxListTile(
+            contentPadding: EdgeInsets.zero,
+            title: Text('is Completed'),
+            value: data.isCompleted,
+            dense: true,
+            onChanged: (value) {
+              ref.read(todoProvider.notifier).updateTodoCompleted(data.id);
+            },
+          ),
+          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+          title: Text(data.todo),
+          trailing: SizedBox(
+            width: 100,
+            child: Row(
+              children: [
+                IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
+                IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
+              ],
+            ),
+          ),
+        );
+      },
+      separatorBuilder: (context, index) => Divider(),
+      itemCount: todoList.length,
     );
   }
 }

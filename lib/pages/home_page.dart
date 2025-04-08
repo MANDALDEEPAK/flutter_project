@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_proj/pages/widgets/todo_form.dart';
 import 'package:flutter_proj/pages/widgets/todo_list.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,6 +13,8 @@ class HomePage extends StatelessWidget {
       ),
       body: ListView(
         children: [
+
+          TodoForm(),
 
           TodoList(),
 
