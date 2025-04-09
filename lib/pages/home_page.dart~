@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_proj/providers/animate.dart';
+import 'package:flutter_proj/providers/number_counter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../app_theme/app_sizes.dart';
