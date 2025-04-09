@@ -23,6 +23,12 @@ class TodoProvider extends Notifier<List<Todo>>{
       for(final todo in state) todo.id == id ? todo.copyWith(todo: label): todo
     ];
   }
+
+  void removeTodo(String id){
+      state = state.where((todo) => todo.id !=id).toList();
+  }
+
+
 }
 
 final todoProvider = NotifierProvider<TodoProvider,List<Todo>>(() => TodoProvider());
