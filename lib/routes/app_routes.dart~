@@ -1,6 +1,6 @@
 
 import 'package:flutter_proj/features/products/presentation/product_list.dart';
-import 'package:flutter_proj/features/recipes/presentation/recipes.dart';
+import 'package:flutter_proj/features/recipes/domain/recipe.dart';
 import 'package:flutter_proj/routes/route_enums.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,7 +13,7 @@ class AppRoutes{
 
           GoRoute(
             path: '/',
-            builder: (context, state) => Recipes(),
+            builder: (context, state) => Recipe()
           )
 
             ],
