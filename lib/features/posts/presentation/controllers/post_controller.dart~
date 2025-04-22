@@ -1,0 +1,10 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../../domain/post.dart';
+part 'post_controller.g.dart';
+
+@riverpod
+Future<List<Post>> getPosts(Ref ref) async {
+  return ;
+}

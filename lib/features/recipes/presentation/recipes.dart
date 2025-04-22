@@ -10,11 +10,7 @@ class Recipes extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final recipeState = ref.watch(getRecipeProvider);
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('List Of Recipes'),
-      ),
-      body: Padding(
+    return Padding(
         padding: const EdgeInsets.all(12.0),
         child: recipeState.when(
             data: (data){
@@ -40,8 +36,6 @@ class Recipes extends ConsumerWidget {
             error: (err,stack) => Text('$err'),
             loading: () => Center(child: CircularProgressIndicator()),
         ),
-      ),
-
     ) ;
   }
 }

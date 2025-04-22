@@ -8,5 +8,5 @@ part 'recipe_controller.g.dart';
 
 @riverpod
 Future<List<Recipe>> getRecipe(Ref ref) async {
-  return ref.read(recipeRepositoryProvider).getRecipes();
+  return RecipeRepository().getRecipes();
 }
