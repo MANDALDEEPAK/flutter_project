@@ -1,29 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'product_repository.dart';
+part of 'todo_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$productRepositoryHash() => r'6f853cb789b483906124e9f139d82290c5790294';
+String _$todoControllerHash() => r'57eb7ae3595912484a0b9c273c3e2626d9e38bae';
 
-/// See also [productRepository].
-@ProviderFor(productRepository)
-final productRepositoryProvider =
-    AutoDisposeProvider<ProductRepository>.internal(
-      productRepository,
-      name: r'productRepositoryProvider',
+/// See also [TodoController].
+@ProviderFor(TodoController)
+final todoControllerProvider =
+    AutoDisposeAsyncNotifierProvider<TodoController, List<Todo>>.internal(
+      TodoController.new,
+      name: r'todoControllerProvider',
       debugGetCreateSourceHash:
           const bool.fromEnvironment('dart.vm.product')
               ? null
-              : _$productRepositoryHash,
+              : _$todoControllerHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef ProductRepositoryRef = AutoDisposeProviderRef<ProductRepository>;
+typedef _$TodoController = AutoDisposeAsyncNotifier<List<Todo>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

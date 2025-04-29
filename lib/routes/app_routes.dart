@@ -1,8 +1,5 @@
 
-import 'package:flutter_proj/features/home/presentation/home.dart';
-import 'package:flutter_proj/features/posts/presentation/posts.dart';
-import 'package:flutter_proj/features/products/presentation/product_list.dart';
-import 'package:flutter_proj/features/recipes/presentation/recipes.dart';
+import 'package:flutter_proj/features/todos/presentation/todo_list.dart';
 import 'package:flutter_proj/routes/route_enums.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,7 +12,8 @@ class AppRoutes{
 
           GoRoute(
             path: '/',
-            builder: (context, state) => HomePage(),
+            builder: (context,index) => TodoList(),
+
           )
 
             ],

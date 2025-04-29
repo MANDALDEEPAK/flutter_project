@@ -8,7 +8,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
 void main()async{
+  try{
+    final v = await TodosRepository(Dio(
+    )).getTodos();
+    print(v);
+  }catch(err){
+    print(err);
+  }
+
   runApp(ProviderScope(child:Home()));
+
 }
 
 class Home extends StatelessWidget {

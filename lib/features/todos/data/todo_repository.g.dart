@@ -1,26 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'products_controller.dart';
+part of 'todo_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getProductsHash() => r'a0755a73497bf67c1a4030e52c32898c9dac1283';
+String _$todosRepositoryHash() => r'474a430433faeb08da79e55ef68acccd99558179';
 
-/// See also [getProducts].
-@ProviderFor(getProducts)
-final getProductsProvider = AutoDisposeFutureProvider<List<Product>>.internal(
-  getProducts,
-  name: r'getProductsProvider',
+/// See also [todosRepository].
+@ProviderFor(todosRepository)
+final todosRepositoryProvider = AutoDisposeProvider<TodosRepository>.internal(
+  todosRepository,
+  name: r'todosRepositoryProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$getProductsHash,
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$todosRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef GetProductsRef = AutoDisposeFutureProviderRef<List<Product>>;
+typedef TodosRepositoryRef = AutoDisposeProviderRef<TodosRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
