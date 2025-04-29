@@ -12,7 +12,7 @@ class TodoList extends ConsumerWidget {
     
     ref.listen(todoControllerProvider, (previous, next){
       next.maybeWhen(
-        data: (data) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Sucesss'))),
+        data: (data) =>ScaffoldMessenger.of(context).showSnackBar(SnackBar(context: Text('Sucesss'))),
         error: (err,stack){
           SnackBar(content: Text('$err'),);
         },orElse: () => null,

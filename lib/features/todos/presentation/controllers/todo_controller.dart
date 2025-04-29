@@ -3,7 +3,7 @@ import 'package:flutter_proj/features/todos/domain/todo.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'todo_controller.g.dart';
 
-
+int todoIndex = 0;
 @riverpod
 class TodoController extends _$TodoController {
   @override
@@ -12,12 +12,14 @@ class TodoController extends _$TodoController {
 
   }
 
-  Future<void> removeTodo(String id)async{
+  Future<void> removeTodo(String id, int index)async{
+     todoIndex = index;
     state = AsyncLoading();
     try{
       final response = await ref.read(todosRepositoryProvider).removeTodos(id:id);
-      ref.invalidateSelf();
-
+      state = AsyncData([...state.value!.where((todo) => todo.id != id)]);
+      // ref.invalidateSelf();
+      // await future;
     }catch(err, stack){
        state = AsyncError(err, stack);
     }
