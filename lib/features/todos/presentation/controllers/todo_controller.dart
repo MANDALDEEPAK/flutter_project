@@ -11,6 +11,18 @@ class TodoController extends _$TodoController {
     return ref.read(todosRepositoryProvider).getTodos();
 
   }
+  Future<void> addTodo(Map<String,dynamic>todoData)async{
+    state = AsyncLoading();
+    try{
+      final todo = await ref.read(todosRepositoryProvider).addTodo(todoData: todoData);
+      state = AsyncData([...state.value!,todo]);
+      // ref.invalidateSelf();
+      // await future;
+    }catch(err, stack){
+      state = AsyncError(err, stack);
+    }
+  }
+
 
   Future<void> removeTodo(String id, int index)async{
      todoIndex = index;

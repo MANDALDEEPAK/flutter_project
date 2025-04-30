@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_proj/core/app_theme/app_sizes.dart';
 import 'package:flutter_proj/features/todos/presentation/controllers/todo_controller.dart';
+import 'package:flutter_proj/routes/route_enums.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class TodoList extends ConsumerWidget {
   const TodoList({super.key});
@@ -55,6 +57,11 @@ class TodoList extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          ElevatedButton(onPressed: (){
+            context.pushNamed(AppRoute.todoForm.name);
+          }, child: Text('Add Todo')),
+        ],
 
       ),
       body: Center(
