@@ -1,28 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'todo_repository.dart';
+part of 'meal_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$todosRepositoryHash() => r'474a430433faeb08da79e55ef68acccd99558179';
+String _$mealRepositoryHash() => r'631614c11b3ef08c383f330e2f93f4064f67fa93';
 
-/// See also [todosRepository].
-@ProviderFor(todosRepository)
-final todosRepositoryProvider = AutoDisposeProvider<TodosRepository>.internal(
-  todosRepository,
-  name: r'todosRepositoryProvider',
+/// See also [mealRepository].
+@ProviderFor(mealRepository)
+final mealRepositoryProvider = AutoDisposeProvider<MealRepository>.internal(
+  mealRepository,
+  name: r'mealRepositoryProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product')
           ? null
-          : _$todosRepositoryHash,
+          : _$mealRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef TodosRepositoryRef = AutoDisposeProviderRef<TodosRepository>;
+typedef MealRepositoryRef = AutoDisposeProviderRef<MealRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

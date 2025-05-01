@@ -9,6 +9,7 @@ class AppRoutes{
     return GoRouter(
       initialLocation: '/',
         routes: [
+
           GoRoute(
             path: '/',
             builder: (context, state) => Container(),

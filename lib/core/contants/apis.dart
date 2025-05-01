@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
 
-const baseUrl = 'https://68076490e81df7060eba0991.mockapi.io';
-const todosApi = '/todos';
+const baseUrl = 'https://www.themealdb.com/api/json/v1/1';
+const categoriesApi = '/meals/categories.php';

@@ -1,0 +1,40 @@
+
+
+
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+
+class ApiException{
+
+
+  final DioException exception;
+
+  ApiException(this.exception);
+
+  String get errorMessage{
+    switch(exception.type){
+      case DioExceptionType.cancel:
+        return "Request to Api server was cancelled";
+
+      case DioExceptionType.connectionTimeout:
+       return "Connection timeout with Api server";
+
+      case DioExceptionType.receiveTimeout:
+        return "Receive timeout in connection with Api server";
+
+      case DioExceptionType.badResponse:
+     return "${exception.response}";
+
+      case DioExceptionType.unknown:
+     return "Unexpected error occurred";
+
+      case DioExceptionType.sendTimeout:
+       return "Send timeout in connection with Api server";
+
+      case DioExceptionType.badCertificate:
+      return "Error occurred while communication with Api server";
+      case DioExceptionType.connectionError:
+      return "Please check your internet connection";
+    }
+  }
+}
