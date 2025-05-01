@@ -12,7 +12,7 @@ class TodoController extends _$TodoController {
 
   }
   Future<void> addTodo(Map<String,dynamic>todoData)async{
-    final value = state.requireValue;
+    final value = state.requirealue;
     state = AsyncLoading();
 
     state = await AsyncValue.guard(()async{
