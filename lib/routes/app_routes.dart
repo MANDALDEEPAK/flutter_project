@@ -15,13 +15,12 @@ class AppRoutes{
             path: '/',
             builder: (context, state) => MealPage(),
             routes: [
-
               GoRoute(
-                  path: '/category - items',
+                  path: '/category-items',
                   name: AppRoute.categoryItems.name,
                   builder: (context, state){
                     return CategoryItems(category: state.extra as String,);
-    }
+    },
               ),
 
             ]

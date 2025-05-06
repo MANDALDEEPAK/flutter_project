@@ -35,7 +35,7 @@ class MealPage extends ConsumerWidget {
               );
             },
             error: (err, st){
-              print(st);
+              // print(st);
               return Center(
                 child: HtmlWidget(
                   err.toString(),
