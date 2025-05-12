@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'sign_up_provider.dart';
+part of 'image_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$signUpControllerHash() => r'b78a384d0d1e1c6aedfc83ebcd9f0994c61452bd';
+String _$imageControllerHash() => r'4220124ac646ace95e63ca0842a5eefbb687304f';
 
-/// See also [SignUpController].
-@ProviderFor(SignUpController)
-final signUpControllerProvider =
-    AutoDisposeAsyncNotifierProvider<SignUpController, void>.internal(
-      SignUpController.new,
-      name: r'signUpControllerProvider',
+/// See also [ImageController].
+@ProviderFor(ImageController)
+final imageControllerProvider =
+    AutoDisposeNotifierProvider<ImageController, XFile?>.internal(
+      ImageController.new,
+      name: r'imageControllerProvider',
       debugGetCreateSourceHash:
           const bool.fromEnvironment('dart.vm.product')
               ? null
-              : _$signUpControllerHash,
+              : _$imageControllerHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
-typedef _$SignUpController = AutoDisposeAsyncNotifier<void>;
+typedef _$ImageController = AutoDisposeNotifier<XFile?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

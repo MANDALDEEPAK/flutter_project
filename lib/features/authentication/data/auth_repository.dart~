@@ -48,7 +48,7 @@ class AuthRepository{
     }on CloudinaryException catch(err){
       print(err.message);
       print(err);
-      throw'${err.message}';
+      throw'${err.message}'
     }
   }
 

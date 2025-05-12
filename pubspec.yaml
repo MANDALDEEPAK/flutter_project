@@ -49,6 +49,8 @@ dependencies:
   onesignal_flutter: ^5.3.0
   cloud_firestore: ^5.6.7
   firebase_auth: ^5.5.3
+  cloudinary_public: ^0.23.1
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:
