@@ -1,0 +1,61 @@
+import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloudinary_public/cloudinary_public.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../../shared/instance.dart';
+
+part 'book_repository.g.dart';
+
+
+class BookRepository {
+
+  Future<void> addBook ({
+    required File file,
+    required XFile image,
+    required String title,
+    required String genre,
+    required int price,
+    required String publisher,
+    required String author,
+  }) async{
+    try{
+      final response1 = await CloudinaryInstances.cloudinary.uploadFile(
+        CloudinaryFile.fromFile(file.path),
+      );
+      final response2 = await CloudinaryInstances.cloudinary.uploadFile(
+        CloudinaryFile.fromFile(image.path, resourceType: CloudinaryResourceType.Image),
+      );
+
+      await FirebaseInstances.bookDb.add({
+        'title': title,
+        'genre': genre,
+        'price': price,
+        'publisher': publisher,
+        'author': author,
+        'image': response2.secureUrl,
+        'file': response1.secureUrl
+      });
+
+    } on FirebaseException catch(err){
+      throw '${err.message}';
+
+    }on CloudinaryException catch(err){
+      print(err);
+      throw '${err.message}';
+    }catch(err){
+      print(err);
+    }
+
+
+  }
+
+
+}
+
+@riverpod
+BookRepository bookRepo(Ref ref) {
+  return BookRepository();
+}

@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserData {
-  String get name => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   int get phone => throw _privateConstructorUsedError;
@@ -35,7 +35,13 @@ abstract class $UserDataCopyWith<$Res> {
   factory $UserDataCopyWith(UserData value, $Res Function(UserData) then) =
       _$UserDataCopyWithImpl<$Res, UserData>;
   @useResult
-  $Res call({String name, String email, String image, int phone, String uid});
+  $Res call({
+    String username,
+    String email,
+    String image,
+    int phone,
+    String uid,
+  });
 }
 
 /// @nodoc
@@ -53,7 +59,7 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? username = null,
     Object? email = null,
     Object? image = null,
     Object? phone = null,
@@ -61,10 +67,10 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
   }) {
     return _then(
       _value.copyWith(
-            name:
-                null == name
-                    ? _value.name
-                    : name // ignore: cast_nullable_to_non_nullable
+            username:
+                null == username
+                    ? _value.username
+                    : username // ignore: cast_nullable_to_non_nullable
                         as String,
             email:
                 null == email
@@ -101,7 +107,13 @@ abstract class _$$UserDataImplCopyWith<$Res>
   ) = __$$UserDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String email, String image, int phone, String uid});
+  $Res call({
+    String username,
+    String email,
+    String image,
+    int phone,
+    String uid,
+  });
 }
 
 /// @nodoc
@@ -118,7 +130,7 @@ class __$$UserDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? username = null,
     Object? email = null,
     Object? image = null,
     Object? phone = null,
@@ -126,10 +138,10 @@ class __$$UserDataImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$UserDataImpl(
-        name:
-            null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
+        username:
+            null == username
+                ? _value.username
+                : username // ignore: cast_nullable_to_non_nullable
                     as String,
         email:
             null == email
@@ -160,7 +172,7 @@ class __$$UserDataImplCopyWithImpl<$Res>
 
 class _$UserDataImpl implements _UserData {
   const _$UserDataImpl({
-    required this.name,
+    required this.username,
     required this.email,
     required this.image,
     required this.phone,
@@ -168,7 +180,7 @@ class _$UserDataImpl implements _UserData {
   });
 
   @override
-  final String name;
+  final String username;
   @override
   final String email;
   @override
@@ -180,7 +192,7 @@ class _$UserDataImpl implements _UserData {
 
   @override
   String toString() {
-    return 'UserData(name: $name, email: $email, image: $image, phone: $phone, uid: $uid)';
+    return 'UserData(username: $username, email: $email, image: $image, phone: $phone, uid: $uid)';
   }
 
   @override
@@ -188,7 +200,8 @@ class _$UserDataImpl implements _UserData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserDataImpl &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.phone, phone) || other.phone == phone) &&
@@ -196,7 +209,8 @@ class _$UserDataImpl implements _UserData {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, email, image, phone, uid);
+  int get hashCode =>
+      Object.hash(runtimeType, username, email, image, phone, uid);
 
   /// Create a copy of UserData
   /// with the given fields replaced by the non-null parameter values.
@@ -209,7 +223,7 @@ class _$UserDataImpl implements _UserData {
 
 abstract class _UserData implements UserData {
   const factory _UserData({
-    required final String name,
+    required final String username,
     required final String email,
     required final String image,
     required final int phone,
@@ -217,7 +231,7 @@ abstract class _UserData implements UserData {
   }) = _$UserDataImpl;
 
   @override
-  String get name;
+  String get username;
   @override
   String get email;
   @override

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_proj/features/authentication/data/auth_repository.dart';
+import 'package:flutter_proj/features/home/presentation/widgets/widget_drawer.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../routes/route_enums.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,29 +10,16 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Booking App'),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.amber,
-              ), child: Text('Drawer Header'),
-            ),
-            ListTile(
-              onTap:  (){
-               AuthRepository.userSignOut();
-              },
-              title: Text('SignOut'),
-              leading: Icon(Icons.exit_to_app),
-            )
+        appBar: AppBar(
+          title: const Text('Booking App'),
+          actions: [
+            IconButton(onPressed: (){
+              context.pushNamed(AppRoute.bookForm.name);
+            }, icon: const Icon(Icons.add)),
           ],
         ),
 
-      ),
+        drawer: DrawerWidget()
     );
   }
 }

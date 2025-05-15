@@ -30,7 +30,8 @@ class AuthRepository{
     required int phone})
   async{
     try{
-      final credential = await FirebaseInstances.fireAuth.createUserWithEmailAndPassword(email: email, password: password);
+      final credential = await FirebaseInstances.fireAuth.createUserWithEmailAndPassword(
+          email: email, password: password);
       CloudinaryResponse response = await CloudinaryInstances.cloudinary.uploadFile(
         CloudinaryFile.fromFile(image.path, resourceType: CloudinaryResourceType.Image),
       );

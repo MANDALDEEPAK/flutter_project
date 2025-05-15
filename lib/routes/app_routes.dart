@@ -8,6 +8,8 @@ import 'package:flutter_proj/routes/route_enums.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../features/books/presentation/book_form.dart';
 part 'app_routes.g.dart';
 
 @riverpod
@@ -41,6 +43,13 @@ GoRouter router (Ref ref) {
           pageBuilder: (context, state) {
             return NoTransitionPage(child: SignUp());
           }
+        ),
+        GoRoute(
+            path: '/book-form',
+            name: AppRoute.bookForm.name,
+            pageBuilder: (context, state){
+              return NoTransitionPage(child: BookForm());
+            }
         )
       ]
   ) ;
