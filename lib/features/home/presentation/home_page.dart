@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_proj/features/books/presentation/book_list.dart';
 import 'package:flutter_proj/features/home/presentation/widgets/widget_drawer.dart';
 import 'package:go_router/go_router.dart';
 
@@ -19,7 +20,11 @@ class HomePage extends StatelessWidget {
           ],
         ),
 
-        drawer: DrawerWidget()
+        drawer: DrawerWidget(),
+       body: Padding(
+         padding: const EdgeInsets.all(10.0),
+         child:BookList(),
+       ),
     );
   }
 }

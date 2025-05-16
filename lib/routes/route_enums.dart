@@ -5,5 +5,7 @@ enum AppRoute{
    signup,
    books,
    profile,
-   bookForm
+   bookForm,
+   bookDetail,
+   pdf,
 }

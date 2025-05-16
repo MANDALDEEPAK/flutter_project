@@ -2,7 +2,10 @@
 
 import 'package:flutter_proj/features/authentication/presentation/login.dart';
 import 'package:flutter_proj/features/authentication/presentation/sign_up.dart';
+import 'package:flutter_proj/features/books/data/domain/book.dart';
+import 'package:flutter_proj/features/books/presentation/book_detail.dart';
 import 'package:flutter_proj/features/home/presentation/home_page.dart';
+import 'package:flutter_proj/features/pdf/pdf_page.dart';
 import 'package:flutter_proj/features/shared/user_stream_provider.dart';
 import 'package:flutter_proj/routes/route_enums.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -29,7 +32,26 @@ GoRouter router (Ref ref) {
             path: '/',
           pageBuilder: (context, state) {
               return NoTransitionPage(child: HomePage());
-          }
+          },
+          routes: [
+            GoRoute(
+                path: 'book- detail',
+              name: AppRoute.bookDetail.name,
+              pageBuilder: (context, state){
+                  final book = state.extra as Book;
+                  return NoTransitionPage(child: BookDetail(book: book));
+              }
+            ),
+            GoRoute(
+                path: 'pdf',
+                name: AppRoute.pdf.name,
+                pageBuilder: (context, state){
+                  final bookUrl = state.extra as String;
+                  return NoTransitionPage(child: PdfPage(pdfUrl: bookUrl));
+                }
+            ),
+          ],
+
         ),
         GoRoute(
             path: '/login',
