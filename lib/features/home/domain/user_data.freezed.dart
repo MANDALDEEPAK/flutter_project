@@ -22,6 +22,7 @@ mixin _$UserData {
   String get image => throw _privateConstructorUsedError;
   int get phone => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
+  String get role => throw _privateConstructorUsedError;
 
   /// Create a copy of UserData
   /// with the given fields replaced by the non-null parameter values.
@@ -41,6 +42,7 @@ abstract class $UserDataCopyWith<$Res> {
     String image,
     int phone,
     String uid,
+    String role,
   });
 }
 
@@ -64,6 +66,7 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
     Object? image = null,
     Object? phone = null,
     Object? uid = null,
+    Object? role = null,
   }) {
     return _then(
       _value.copyWith(
@@ -92,6 +95,11 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
                     ? _value.uid
                     : uid // ignore: cast_nullable_to_non_nullable
                         as String,
+            role:
+                null == role
+                    ? _value.role
+                    : role // ignore: cast_nullable_to_non_nullable
+                        as String,
           )
           as $Val,
     );
@@ -113,6 +121,7 @@ abstract class _$$UserDataImplCopyWith<$Res>
     String image,
     int phone,
     String uid,
+    String role,
   });
 }
 
@@ -135,6 +144,7 @@ class __$$UserDataImplCopyWithImpl<$Res>
     Object? image = null,
     Object? phone = null,
     Object? uid = null,
+    Object? role = null,
   }) {
     return _then(
       _$UserDataImpl(
@@ -163,6 +173,11 @@ class __$$UserDataImplCopyWithImpl<$Res>
                 ? _value.uid
                 : uid // ignore: cast_nullable_to_non_nullable
                     as String,
+        role:
+            null == role
+                ? _value.role
+                : role // ignore: cast_nullable_to_non_nullable
+                    as String,
       ),
     );
   }
@@ -177,6 +192,7 @@ class _$UserDataImpl implements _UserData {
     required this.image,
     required this.phone,
     required this.uid,
+    required this.role,
   });
 
   @override
@@ -189,10 +205,12 @@ class _$UserDataImpl implements _UserData {
   final int phone;
   @override
   final String uid;
+  @override
+  final String role;
 
   @override
   String toString() {
-    return 'UserData(username: $username, email: $email, image: $image, phone: $phone, uid: $uid)';
+    return 'UserData(username: $username, email: $email, image: $image, phone: $phone, uid: $uid, role: $role)';
   }
 
   @override
@@ -205,12 +223,13 @@ class _$UserDataImpl implements _UserData {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.uid, uid) || other.uid == uid));
+            (identical(other.uid, uid) || other.uid == uid) &&
+            (identical(other.role, role) || other.role == role));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, username, email, image, phone, uid);
+      Object.hash(runtimeType, username, email, image, phone, uid, role);
 
   /// Create a copy of UserData
   /// with the given fields replaced by the non-null parameter values.
@@ -228,6 +247,7 @@ abstract class _UserData implements UserData {
     required final String image,
     required final int phone,
     required final String uid,
+    required final String role,
   }) = _$UserDataImpl;
 
   @override
@@ -240,6 +260,8 @@ abstract class _UserData implements UserData {
   int get phone;
   @override
   String get uid;
+  @override
+  String get role;
 
   /// Create a copy of UserData
   /// with the given fields replaced by the non-null parameter values.

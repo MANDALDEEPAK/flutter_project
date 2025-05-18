@@ -9,8 +9,7 @@ class UserData with _$UserData {
     required String email,
     required String image,
     required int phone,
-    required String uid,
-    required String role,
+    required String uid
 }) = _UserData;
 
 }

@@ -63,6 +63,71 @@ class BookRepository {
   }
 
 
+  Future<void> updateBook ({
+    required File? file,
+    required XFile? image,
+    required String? imageUrl,
+    required String? fileUrl,
+    required String title,
+    required String genre,
+    required int price,
+    required String publisher,
+    required String author,
+    required String description,
+    required String bookId,
+  }) async{
+    try{
+      CloudinaryResponse? response1;
+      CloudinaryResponse? response2;
+      if(image != null){
+        await CloudinaryInstances.delCloudinary.destroy(
+          'public_id',
+          url: image.path,
+          invalidate: true,
+        );
+        response1 = await CloudinaryInstances.cloudinary.uploadFile(
+          CloudinaryFile.fromFile(image.path, resourceType: CloudinaryResourceType.Image),
+        );
+      }
+      if(file != null){
+        await CloudinaryInstances.delCloudinary.destroy(
+          'public_id',
+          url: fileUrl,
+          invalidate: true,
+        );
+         response2 = await CloudinaryInstances.cloudinary.uploadFile(
+          CloudinaryFile.fromFile(file.path,),
+        );
+      }
+
+      // final response2 = await CloudinaryInstances.cloudinary.uploadFile(
+      //   CloudinaryFile.fromFile(image.path, resourceType: CloudinaryResourceType.Image),
+      // );
+      //
+      await FirebaseInstances.bookDb.doc(bookId).update({
+        'title': title,
+        'genre': genre,
+        'price': price,
+        'publisher': publisher,
+        'author': author,
+        'image': response1?.secureUrl ?? imageUrl,
+        'file': response2?.secureUrl  ?? fileUrl,
+      });
+
+    } on FirebaseException catch(err){
+      throw '${err.message}';
+
+    }on CloudinaryException catch(err){
+      print(err);
+      throw '${err.message}';
+    }catch(err){
+      print(err);
+    }
+
+
+  }
+
+
 }
 
 @riverpod

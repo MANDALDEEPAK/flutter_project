@@ -1,5 +1,7 @@
 
 
+import 'package:flutter_proj/features/admin/presentation/admin_dashboard.dart';
+import 'package:flutter_proj/features/admin/presentation/book_edit_form.dart';
 import 'package:flutter_proj/features/authentication/presentation/login.dart';
 import 'package:flutter_proj/features/authentication/presentation/sign_up.dart';
 import 'package:flutter_proj/features/books/data/domain/book.dart';
@@ -54,6 +56,13 @@ GoRouter router (Ref ref) {
 
         ),
         GoRoute(
+            path: '/admin',
+            name: AppRoute.admin.name,
+            pageBuilder: (context, state) {
+              return NoTransitionPage(child: AdminDashboard());
+            }
+        ),
+        GoRoute(
             path: '/login',
             pageBuilder: (context, state) {
               return NoTransitionPage(child: Login());
@@ -71,6 +80,12 @@ GoRouter router (Ref ref) {
             name: AppRoute.bookForm.name,
             pageBuilder: (context, state){
               return NoTransitionPage(child: BookForm());
+            }
+        ), GoRoute(
+            path: '/book-edit',
+            name: AppRoute.bookEdit.name,
+            pageBuilder: (context, state){
+              return NoTransitionPage(child: BookEditForm(book: state.extra as Book));
             }
         )
       ]

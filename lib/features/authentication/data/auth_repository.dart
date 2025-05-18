@@ -22,37 +22,33 @@ class AuthRepository{
   }
 
 
-  Future<void> userSignUp({
-    required String username,
-    required String email,
-    required String password,
-    required XFile image,
-    required int phone})
-  async{
+  Future<void> userSignUp ({
+    required String username, required String email,
+    required String password, required XFile image,required int phone
+  }) async{
     try{
-      final credential = await FirebaseInstances.fireAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      final credential = await FirebaseInstances.fireAuth.createUserWithEmailAndPassword(email: email, password: password);
+
       CloudinaryResponse response = await CloudinaryInstances.cloudinary.uploadFile(
         CloudinaryFile.fromFile(image.path, resourceType: CloudinaryResourceType.Image),
       );
-
       await FirebaseInstances.userDb.doc(credential.user!.uid).set({
-        'username':username,
+        'username': username,
         'email': email,
         'phone': phone,
         'image': response.secureUrl,
+        'role': 'user'
       });
-    }on FirebaseAuthException catch (err){
+    }on FirebaseAuthException catch(err){
       print(err.message);
       print(err);
       throw '${err.message}';
     }on CloudinaryException catch(err){
       print(err.message);
       print(err);
-      throw'${err.message}';
+      throw '${err.message}';
     }
   }
-
 
 
  static Future<void> userSignOut() async{
