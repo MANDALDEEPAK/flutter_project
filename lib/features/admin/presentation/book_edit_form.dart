@@ -139,7 +139,7 @@ class _BookEditFormState extends ConsumerState<BookEditForm> {
                   height: 100,
                   child:
                   image == null
-                      ? CachedNetworkImage(imageUrl: widget.book.image)
+                      ? CachedNetworkImage(imageUrl: widget.book.imageUrl)
                       : Image.file(File(image.path)),
                 ),
               ),
@@ -155,7 +155,7 @@ class _BookEditFormState extends ConsumerState<BookEditForm> {
                   ),
                   height: 50,
                   child: Center(
-                    child: Text(file == null ? widget.book.file : file.path),
+                    child: Text(file == null ? widget.book.fileUrl : file.path),
                   ),
                 ),
               ),
@@ -170,34 +170,33 @@ class _BookEditFormState extends ConsumerState<BookEditForm> {
                   if (_formKey.currentState!.saveAndValidate(
                     focusOnInvalid: false,
                   )) {
-                    final map = _formKey.currentState!.value;
-                    if (file != null && image != null) {
-                      ref
-                          .read(bookControllerProvider.notifier)
-                          .addBook(
-                        file: file,
-                        image: image,
-                        title: map['title'],
-                        genre: map['genre'],
-                        price: int.parse(map['price']),
-                        publisher: map['publisher'],
-                        author: map['author'],
-                        description: map['description'],
-                      );
+                    ref.read(bookControllerProvider.notifier).updateBook(
+                    title: _formKey.currentState!.value['title'],
+                    genre: _formKey.currentState!.value['genre'],
+                    price: _formKey.currentState!.value['price'],
+                    publisher: _formKey.currentState!.value['publisher'],
+                    author: _formKey.currentState!.value['author'],
+                    description: _formKey.currentState!.value['description'],
+                    bookId: widget.book.id,
+                    image: image,
+                    file: file,
+                    imageUrl: widget.book.imageUrl,
+                    fileUrl: widget.book.fileUrl,
+    );
                     } else {
-                      ScaffoldMessenger.of(
-                        context,
-                      ).hideCurrentSnackBar();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          duration: Duration(seconds: 1),
-                          content: Text(
-                            'Please Select an Image And File',
-                          ),
-                        ),
-                      );
-                    }
-                  } else {
+                    //   ScaffoldMessenger.of(
+                    //     context,
+                    //   ).hideCurrentSnackBar();
+                    //   ScaffoldMessenger.of(context).showSnackBar(
+                    //     SnackBar(
+                    //       duration: Duration(seconds: 1),
+                    //       content: Text(
+                    //         'Please Select an Image And File',
+                    //       ),
+                    //     ),
+                    //   );
+                    // }
+                  // } else {
                     ref
                         .read(
                       validateModeControllerProvider(

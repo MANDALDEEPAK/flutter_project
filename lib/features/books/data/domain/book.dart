@@ -15,8 +15,10 @@ class Book with _$Book {
     required String author,
     required String publisher,
     required int price,
-    required String image,
-    required String file,
+  required String imageUrl,
+  required String fileUrl,
+  required String imageId,
+  required String fileId
 }) = _Book;
 
   factory Book.fromJson(Map<String, dynamic> json) =>

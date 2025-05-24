@@ -46,8 +46,7 @@ class BookRepository {
         'imageUrl': response2.secure_url,
         'fileUrl': response1.secure_url,
         'imageId': response2.public_id,
-        'fileId': response1.public_id,
-        'description': description
+        'fileId': response1.public_id
       });
 
     } on FirebaseException catch(err){

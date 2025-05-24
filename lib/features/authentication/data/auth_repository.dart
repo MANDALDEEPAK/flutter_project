@@ -1,11 +1,14 @@
 
+import 'dart:io';
 
-import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_proj/features/cloudinary/data/cloudinary_service.dart';
 import 'package:flutter_proj/features/shared/instance.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../../cloudinary/domain/cloudinary_response.dart';
 part 'auth_repository.g.dart';
 
 
@@ -29,24 +32,20 @@ class AuthRepository{
     try{
       final credential = await FirebaseInstances.fireAuth.createUserWithEmailAndPassword(email: email, password: password);
 
-      CloudinaryResponse response = await CloudinaryInstances.cloudinary.uploadFile(
-        CloudinaryFile.fromFile(image.path, resourceType: CloudinaryResourceType.Image),
-      );
+      CloudinaryResponse response = await CloudinaryRepository.uploadImage(File(image.path));
       await FirebaseInstances.userDb.doc(credential.user!.uid).set({
         'username': username,
         'email': email,
         'phone': phone,
-        'image': response.secureUrl,
+        'imageUrl': response.secure_url,
+        'public_idUrl': response.public_id,
         'role': 'user'
       });
     }on FirebaseAuthException catch(err){
-      print(err.message);
-      print(err);
       throw '${err.message}';
-    }on CloudinaryException catch(err){
-      print(err.message);
+    }catch(err){
       print(err);
-      throw '${err.message}';
+      throw '${err}';
     }
   }
 

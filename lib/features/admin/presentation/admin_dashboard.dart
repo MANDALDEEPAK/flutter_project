@@ -32,7 +32,7 @@ class AdminDashboard extends ConsumerWidget {
                       context.pushNamed(AppRoute.bookDetail.name,extra: book);
                     },
                     leading: CircleAvatar(
-                      backgroundImage: NetworkImage(book.image),
+                      backgroundImage: NetworkImage(book.imageUrl),
                     ),
                     title: Text(book.title),
                     trailing: SizedBox(

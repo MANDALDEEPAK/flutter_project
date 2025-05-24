@@ -49,11 +49,10 @@ dependencies:
   onesignal_flutter: ^5.3.0
   cloud_firestore: ^5.6.7
   firebase_auth: ^5.5.3
-  cloudinary_public: ^0.23.1
   image_picker: ^1.1.2
   file_picker: ^10.1.7
   syncfusion_flutter_pdfviewer: ^29.1.41
-  cloudinary: ^1.2.0
+
 
 dev_dependencies:
   flutter_test:

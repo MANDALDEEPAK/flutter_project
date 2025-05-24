@@ -28,8 +28,10 @@ mixin _$Book {
   String get author => throw _privateConstructorUsedError;
   String get publisher => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
-  String get file => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
+  String get fileUrl => throw _privateConstructorUsedError;
+  String get imageId => throw _privateConstructorUsedError;
+  String get fileId => throw _privateConstructorUsedError;
 
   /// Serializes this Book to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,8 +55,10 @@ abstract class $BookCopyWith<$Res> {
     String author,
     String publisher,
     int price,
-    String image,
-    String file,
+    String imageUrl,
+    String fileUrl,
+    String imageId,
+    String fileId,
   });
 }
 
@@ -80,8 +84,10 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
     Object? author = null,
     Object? publisher = null,
     Object? price = null,
-    Object? image = null,
-    Object? file = null,
+    Object? imageUrl = null,
+    Object? fileUrl = null,
+    Object? imageId = null,
+    Object? fileId = null,
   }) {
     return _then(
       _value.copyWith(
@@ -120,15 +126,25 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
                     ? _value.price
                     : price // ignore: cast_nullable_to_non_nullable
                         as int,
-            image:
-                null == image
-                    ? _value.image
-                    : image // ignore: cast_nullable_to_non_nullable
+            imageUrl:
+                null == imageUrl
+                    ? _value.imageUrl
+                    : imageUrl // ignore: cast_nullable_to_non_nullable
                         as String,
-            file:
-                null == file
-                    ? _value.file
-                    : file // ignore: cast_nullable_to_non_nullable
+            fileUrl:
+                null == fileUrl
+                    ? _value.fileUrl
+                    : fileUrl // ignore: cast_nullable_to_non_nullable
+                        as String,
+            imageId:
+                null == imageId
+                    ? _value.imageId
+                    : imageId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            fileId:
+                null == fileId
+                    ? _value.fileId
+                    : fileId // ignore: cast_nullable_to_non_nullable
                         as String,
           )
           as $Val,
@@ -152,8 +168,10 @@ abstract class _$$BookImplCopyWith<$Res> implements $BookCopyWith<$Res> {
     String author,
     String publisher,
     int price,
-    String image,
-    String file,
+    String imageUrl,
+    String fileUrl,
+    String imageId,
+    String fileId,
   });
 }
 
@@ -176,8 +194,10 @@ class __$$BookImplCopyWithImpl<$Res>
     Object? author = null,
     Object? publisher = null,
     Object? price = null,
-    Object? image = null,
-    Object? file = null,
+    Object? imageUrl = null,
+    Object? fileUrl = null,
+    Object? imageId = null,
+    Object? fileId = null,
   }) {
     return _then(
       _$BookImpl(
@@ -216,15 +236,25 @@ class __$$BookImplCopyWithImpl<$Res>
                 ? _value.price
                 : price // ignore: cast_nullable_to_non_nullable
                     as int,
-        image:
-            null == image
-                ? _value.image
-                : image // ignore: cast_nullable_to_non_nullable
+        imageUrl:
+            null == imageUrl
+                ? _value.imageUrl
+                : imageUrl // ignore: cast_nullable_to_non_nullable
                     as String,
-        file:
-            null == file
-                ? _value.file
-                : file // ignore: cast_nullable_to_non_nullable
+        fileUrl:
+            null == fileUrl
+                ? _value.fileUrl
+                : fileUrl // ignore: cast_nullable_to_non_nullable
+                    as String,
+        imageId:
+            null == imageId
+                ? _value.imageId
+                : imageId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        fileId:
+            null == fileId
+                ? _value.fileId
+                : fileId // ignore: cast_nullable_to_non_nullable
                     as String,
       ),
     );
@@ -242,8 +272,10 @@ class _$BookImpl implements _Book {
     required this.author,
     required this.publisher,
     required this.price,
-    required this.image,
-    required this.file,
+    required this.imageUrl,
+    required this.fileUrl,
+    required this.imageId,
+    required this.fileId,
   });
 
   factory _$BookImpl.fromJson(Map<String, dynamic> json) =>
@@ -264,13 +296,17 @@ class _$BookImpl implements _Book {
   @override
   final int price;
   @override
-  final String image;
+  final String imageUrl;
   @override
-  final String file;
+  final String fileUrl;
+  @override
+  final String imageId;
+  @override
+  final String fileId;
 
   @override
   String toString() {
-    return 'Book(id: $id, title: $title, description: $description, genre: $genre, author: $author, publisher: $publisher, price: $price, image: $image, file: $file)';
+    return 'Book(id: $id, title: $title, description: $description, genre: $genre, author: $author, publisher: $publisher, price: $price, imageUrl: $imageUrl, fileUrl: $fileUrl, imageId: $imageId, fileId: $fileId)';
   }
 
   @override
@@ -287,8 +323,11 @@ class _$BookImpl implements _Book {
             (identical(other.publisher, publisher) ||
                 other.publisher == publisher) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.file, file) || other.file == file));
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.fileUrl, fileUrl) || other.fileUrl == fileUrl) &&
+            (identical(other.imageId, imageId) || other.imageId == imageId) &&
+            (identical(other.fileId, fileId) || other.fileId == fileId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -302,8 +341,10 @@ class _$BookImpl implements _Book {
     author,
     publisher,
     price,
-    image,
-    file,
+    imageUrl,
+    fileUrl,
+    imageId,
+    fileId,
   );
 
   /// Create a copy of Book
@@ -329,8 +370,10 @@ abstract class _Book implements Book {
     required final String author,
     required final String publisher,
     required final int price,
-    required final String image,
-    required final String file,
+    required final String imageUrl,
+    required final String fileUrl,
+    required final String imageId,
+    required final String fileId,
   }) = _$BookImpl;
 
   factory _Book.fromJson(Map<String, dynamic> json) = _$BookImpl.fromJson;
@@ -350,9 +393,13 @@ abstract class _Book implements Book {
   @override
   int get price;
   @override
-  String get image;
+  String get imageUrl;
   @override
-  String get file;
+  String get fileUrl;
+  @override
+  String get imageId;
+  @override
+  String get fileId;
 
   /// Create a copy of Book
   /// with the given fields replaced by the non-null parameter values.

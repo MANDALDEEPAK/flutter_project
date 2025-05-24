@@ -30,13 +30,14 @@ class BookList extends ConsumerWidget {
                         CachedNetworkImage(
                             height: 200,
                             width: double.infinity,
-                            imageUrl: book.image),
+                            fit: BoxFit.cover,
+                            imageUrl: book.imageUrl),
 
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: [
-                              Text(book.image),
+                              Text(book.title),
                               Text('Author: -${book.author}'),
                             ],
                           ),
