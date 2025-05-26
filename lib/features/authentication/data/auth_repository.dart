@@ -1,25 +1,23 @@
-
 import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_proj/features/cloudinary/data/cloudinary_service.dart';
-import 'package:flutter_proj/features/shared/instance.dart';
+import 'package:flutter_proj/features/cloudinary/data/cloudinary_repository.dart' show CloudinaryRepository;
+import 'package:flutter_proj/features/cloudinary/domain/cloudinary_response.dart' show CloudinaryResponse;
+import 'package:flutter_proj/features/shared/instances.dart' show FirebaseInstances;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
+
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../cloudinary/domain/cloudinary_response.dart';
+
 part 'auth_repository.g.dart';
-
-
 
 class AuthRepository{
 
-
-  Future<void> userLogin({required String email, required String password}) async{
+  Future<void> userLogin ({required String email, required String password}) async{
     try{
       await FirebaseInstances.fireAuth.signInWithEmailAndPassword(email: email, password: password);
-    }on FirebaseAuthException catch (err){
+    }on FirebaseAuthException catch(err){
       throw '${err.message}';
     }
   }
@@ -32,35 +30,35 @@ class AuthRepository{
     try{
       final credential = await FirebaseInstances.fireAuth.createUserWithEmailAndPassword(email: email, password: password);
 
-      CloudinaryResponse response = await CloudinaryRepository.uploadImage(File(image.path));
+      CloudinaryResponse response = await CloudinaryRepository.uploadImageOrFile(File(image.path));
       await FirebaseInstances.userDb.doc(credential.user!.uid).set({
-        'username': username,
-        'email': email,
+       'username': username,
+       'email': email,
         'phone': phone,
-        'imageUrl': response.secure_url,
-        'public_idUrl': response.public_id,
+        'image': response.secure_url,
+        'public_id': response.public_id,
         'role': 'user'
-      });
+     });
     }on FirebaseAuthException catch(err){
       throw '${err.message}';
     }catch(err){
       print(err);
-      throw '${err}';
+      throw '$err';
     }
   }
 
-
- static Future<void> userSignOut() async{
+  static Future<void> userSignOut () async{
     try{
       await FirebaseInstances.fireAuth.signOut();
-    }on FirebaseAuthException catch (err){
+    }on FirebaseAuthException catch(err){
       throw '${err.message}';
     }
   }
+  
 }
 
 
 @riverpod
-AuthRepository authRepository (Ref ref) {
-  return AuthRepository() ;
+AuthRepository  authRepo(Ref ref) {
+  return AuthRepository();
 }

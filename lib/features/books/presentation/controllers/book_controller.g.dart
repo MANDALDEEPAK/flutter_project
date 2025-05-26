@@ -6,25 +6,23 @@ part of 'book_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$bookModelStreamHash() => r'76599d04d4c59c99c26b57457e27ea30f3738c4c';
+String _$bookStreamHash() => r'f8e5a78d1211a9e68fef801e2ef655c7c9592bc6';
 
-/// See also [bookModelStream].
-@ProviderFor(bookModelStream)
-final bookModelStreamProvider = AutoDisposeStreamProvider<List<Book>>.internal(
-  bookModelStream,
-  name: r'bookModelStreamProvider',
+/// See also [bookStream].
+@ProviderFor(bookStream)
+final bookStreamProvider = AutoDisposeStreamProvider<List<Book>>.internal(
+  bookStream,
+  name: r'bookStreamProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$bookModelStreamHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$bookStreamHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef BookModelStreamRef = AutoDisposeStreamProviderRef<List<Book>>;
-String _$bookControllerHash() => r'ead85c2f7b076db12e6bcfa6d3ea9cb185f2b761';
+typedef BookStreamRef = AutoDisposeStreamProviderRef<List<Book>>;
+String _$bookControllerHash() => r'41ec8ac26851ddd02d328de4d47a5dc9f8a99c2b';
 
 /// See also [BookController].
 @ProviderFor(BookController)

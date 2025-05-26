@@ -32,6 +32,7 @@ mixin _$Book {
   String get fileUrl => throw _privateConstructorUsedError;
   String get imageId => throw _privateConstructorUsedError;
   String get fileId => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
 
   /// Serializes this Book to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -59,6 +60,7 @@ abstract class $BookCopyWith<$Res> {
     String fileUrl,
     String imageId,
     String fileId,
+    String userId,
   });
 }
 
@@ -88,6 +90,7 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
     Object? fileUrl = null,
     Object? imageId = null,
     Object? fileId = null,
+    Object? userId = null,
   }) {
     return _then(
       _value.copyWith(
@@ -146,6 +149,11 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
                     ? _value.fileId
                     : fileId // ignore: cast_nullable_to_non_nullable
                         as String,
+            userId:
+                null == userId
+                    ? _value.userId
+                    : userId // ignore: cast_nullable_to_non_nullable
+                        as String,
           )
           as $Val,
     );
@@ -172,6 +180,7 @@ abstract class _$$BookImplCopyWith<$Res> implements $BookCopyWith<$Res> {
     String fileUrl,
     String imageId,
     String fileId,
+    String userId,
   });
 }
 
@@ -198,6 +207,7 @@ class __$$BookImplCopyWithImpl<$Res>
     Object? fileUrl = null,
     Object? imageId = null,
     Object? fileId = null,
+    Object? userId = null,
   }) {
     return _then(
       _$BookImpl(
@@ -256,6 +266,11 @@ class __$$BookImplCopyWithImpl<$Res>
                 ? _value.fileId
                 : fileId // ignore: cast_nullable_to_non_nullable
                     as String,
+        userId:
+            null == userId
+                ? _value.userId
+                : userId // ignore: cast_nullable_to_non_nullable
+                    as String,
       ),
     );
   }
@@ -276,6 +291,7 @@ class _$BookImpl implements _Book {
     required this.fileUrl,
     required this.imageId,
     required this.fileId,
+    required this.userId,
   });
 
   factory _$BookImpl.fromJson(Map<String, dynamic> json) =>
@@ -303,10 +319,12 @@ class _$BookImpl implements _Book {
   final String imageId;
   @override
   final String fileId;
+  @override
+  final String userId;
 
   @override
   String toString() {
-    return 'Book(id: $id, title: $title, description: $description, genre: $genre, author: $author, publisher: $publisher, price: $price, imageUrl: $imageUrl, fileUrl: $fileUrl, imageId: $imageId, fileId: $fileId)';
+    return 'Book(id: $id, title: $title, description: $description, genre: $genre, author: $author, publisher: $publisher, price: $price, imageUrl: $imageUrl, fileUrl: $fileUrl, imageId: $imageId, fileId: $fileId, userId: $userId)';
   }
 
   @override
@@ -327,7 +345,8 @@ class _$BookImpl implements _Book {
                 other.imageUrl == imageUrl) &&
             (identical(other.fileUrl, fileUrl) || other.fileUrl == fileUrl) &&
             (identical(other.imageId, imageId) || other.imageId == imageId) &&
-            (identical(other.fileId, fileId) || other.fileId == fileId));
+            (identical(other.fileId, fileId) || other.fileId == fileId) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -345,6 +364,7 @@ class _$BookImpl implements _Book {
     fileUrl,
     imageId,
     fileId,
+    userId,
   );
 
   /// Create a copy of Book
@@ -374,6 +394,7 @@ abstract class _Book implements Book {
     required final String fileUrl,
     required final String imageId,
     required final String fileId,
+    required final String userId,
   }) = _$BookImpl;
 
   factory _Book.fromJson(Map<String, dynamic> json) = _$BookImpl.fromJson;
@@ -400,6 +421,8 @@ abstract class _Book implements Book {
   String get imageId;
   @override
   String get fileId;
+  @override
+  String get userId;
 
   /// Create a copy of Book
   /// with the given fields replaced by the non-null parameter values.

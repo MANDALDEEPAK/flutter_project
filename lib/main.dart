@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_proj/routes/app_routes.dart';
+import 'package:flutter_proj/routes/app_routes.dart' show routerProvider;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'firebase_options.dart';
 
 
@@ -45,17 +46,17 @@ class _SimpleStreamState extends State<SimpleStream> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder(
-          stream: controller.stream,
-          builder: (context, snapshot) {
-            return Center(child: Text(snapshot.data.toString()));
-          }
+        stream: controller.stream,
+        builder: (context, snapshot) {
+          return Center(child: Text(snapshot.data.toString()));
+        }
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          controller.sink.add(count++);
-        },
+          onPressed: (){
+            controller.sink.add(count++);
+          },
         child: Text('Add'),
-
+      
       ),
     );
   }

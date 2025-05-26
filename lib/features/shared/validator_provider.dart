@@ -3,26 +3,32 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'validator_provider.g.dart';
 
+
 @riverpod
 class ValidateModeController extends _$ValidateModeController {
   @override
   AutovalidateMode build({required int id}) {
-    return AutovalidateMode.disabled;
+    return  AutovalidateMode.disabled;
   }
-
-  void change(){
+  
+  
+  void change() {
     state = AutovalidateMode.onUserInteraction;
+    
   }
+  
 }
+
 
 @riverpod
 class PassController extends _$PassController {
   @override
   bool build({required int id}) {
-    return false;
+    return  false;
   }
 
-  void change(){
+  void change (){
     state = !state;
   }
+
 }

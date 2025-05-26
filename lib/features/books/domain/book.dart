@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'book.g.dart';
-
 part 'book.freezed.dart';
+
 
 
 @freezed
@@ -15,12 +15,12 @@ class Book with _$Book {
     required String author,
     required String publisher,
     required int price,
-  required String imageUrl,
-  required String fileUrl,
-  required String imageId,
-  required String fileId
-}) = _Book;
+ required String imageUrl,
+ required String fileUrl,
+ required String imageId,
+ required String fileId,
+ required String userId,
 
-  factory Book.fromJson(Map<String, dynamic> json) =>
-      _$BookFromJson(json);
+}) = _Book;
+  factory Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);
 }

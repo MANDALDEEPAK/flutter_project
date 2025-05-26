@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_proj/features/authentication/data/auth_repository.dart' show AuthRepository;
 import 'package:flutter_proj/features/home/presentation/controllers/user_controller.dart';
-import 'package:flutter_proj/routes/route_enums.dart';
+import 'package:flutter_proj/routes/route_enums.dart' show AppRoute;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../authentication/data/auth_repository.dart';
-
-
 
 class DrawerWidget extends ConsumerWidget {
   const DrawerWidget({super.key});
@@ -20,7 +17,7 @@ class DrawerWidget extends ConsumerWidget {
             child: ListView(
               padding: EdgeInsets.zero,
               children: [
-                DrawerHeader(
+                 DrawerHeader(
                   decoration: BoxDecoration(color: Colors.blue),
                   child: Column(
                     children: [
@@ -34,14 +31,21 @@ class DrawerWidget extends ConsumerWidget {
                     ],
                   ),
                 ),
-
-                if(user.role == 'admin')  ListTile(
+                if(user.role == 'admin') ListTile(
                   onTap: (){
-                     context.pushNamed(AppRoute.admin.name);
+                    context.pushNamed(AppRoute.admin.name);
                   },
                   leading: Icon(Icons.admin_panel_settings),
                   title: const Text('Admin Panel'),
                 ),
+                if(user.role == 'admin') ListTile(
+                  onTap: (){
+                    context.pushNamed(AppRoute.users.name);
+                  },
+                  leading: Icon(Icons.supervised_user_circle_rounded),
+                  title: const Text('User Panel'),
+                ),
+
 
                 ListTile(
                   onTap: (){
