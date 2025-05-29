@@ -73,12 +73,13 @@ class UserDashboard extends ConsumerWidget {
                                               context.pop();
                                             }, child: const Text('Cancel')),
                                             TextButton(onPressed: () {
+                                              context.pop();
                                               ref.read(userControllerProvider.notifier).removeUser(userId: user.uid);
-                                            }, child:userController.isLoading ? Center(child: CircularProgressIndicator()) : const Text('Remove'))
+                                            }, child: const Text('Remove'))
                                           ]
                                       );
                                     });
-                                  }, icon: const Icon(Icons.delete))
+                                  }, icon:userController.isLoading ? Center(child: CircularProgressIndicator()) : const Icon(Icons.delete))
                                 ],
                               ),
                             ),

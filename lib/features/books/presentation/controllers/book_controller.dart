@@ -56,7 +56,14 @@ class BookController extends _$BookController {
 
   }
 
-
+  Future<void> removeBook ({
+    required String bookId,
+    required String imageId,
+    required String fileId,
+  }) async{
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() => ref.read(bookRepoProvider).removeBook(bookId: bookId, imageId: imageId, fileId: fileId));
+  }
 
 }
 
