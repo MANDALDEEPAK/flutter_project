@@ -52,7 +52,7 @@ static const baseApi = 'https://cloudinary-api-0pch.onrender.com/api';
 
  static Future<void> removeUser(String uid)  async{
    try{
-     await dio.delete('$baseApi/users/$uid');
+     await dio.delete('$baseApi/files/$publicId');
    } catch (err){
      throw '$err';
    }
