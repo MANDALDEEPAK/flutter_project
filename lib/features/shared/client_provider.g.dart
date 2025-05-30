@@ -1,28 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_controller.dart';
+part of 'client_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userProfileStreamHash() => r'16704a8eaf47c55efbb7e35a9b9ba7196ccba963';
+String _$clientHash() => r'3daa4d481d30099aa71e394becd724144c8f6e86';
 
-/// See also [userProfileStream].
-@ProviderFor(userProfileStream)
-final userProfileStreamProvider = AutoDisposeStreamProvider<UserData>.internal(
-  userProfileStream,
-  name: r'userProfileStreamProvider',
+/// See also [client].
+@ProviderFor(client)
+final clientProvider = AutoDisposeProvider<Dio>.internal(
+  client,
+  name: r'clientProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$userProfileStreamHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$clientHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef UserProfileStreamRef = AutoDisposeStreamProviderRef<UserData>;
+typedef ClientRef = AutoDisposeProviderRef<Dio>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -12,9 +12,8 @@ class LoginController extends _$LoginController {
   FutureOr<void> build()  {}
 
 
-  Future<void> userLogin ({required String email, required String password}) async{
+  Future<void> userLogin (Map<String,dynamic>data) async{
     state = const AsyncLoading();
-    state  = await AsyncValue.guard(() => ref.read(authRepoProvider).userLogin(email: email, password: password));
-
+    state  = await AsyncValue.guard(() => ref.read(authRepoProvider).userLogin(data));
   }
 }

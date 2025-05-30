@@ -78,7 +78,7 @@ class _LoginState extends ConsumerState<Login> {
                       FocusScope.of(context).unfocus();
                   if(_formKey.currentState!.saveAndValidate(focusOnInvalid: false)){
                     final map = _formKey.currentState!.value;
-                   ref.read(loginControllerProvider.notifier).userLogin(email: map['email'], password: map['password']);
+                   ref.read(loginControllerProvider.notifier).userLogin(map);
                   }else{
                     ref.read(validateModeControllerProvider(id: 1).notifier).change();
                   }

@@ -1,11 +1,10 @@
-import 'dart:io';
 
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_proj/features/cloudinary/data/cloudinary_repository.dart' show CloudinaryRepository;
-import 'package:flutter_proj/features/cloudinary/domain/cloudinary_response.dart' show CloudinaryResponse;
-import 'package:flutter_proj/features/shared/instances.dart' show FirebaseInstances;
+import 'package:dio/dio.dart';
+import 'package:flutter_proj/core/api.dart';
+import 'package:flutter_proj/core/exception/api_exception.dart';
+import 'package:flutter_proj/features/shared/client_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:image_picker/image_picker.dart';
+
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -13,51 +12,30 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'auth_repository.g.dart';
 
 class AuthRepository{
+final Dio dio;
 
-  Future<void> userLogin ({required String email, required String password}) async{
+AuthRepository(this.dio);
+  Future<void> userLogin (Map<String,dynamic>map) async{
     try{
-      await FirebaseInstances.fireAuth.signInWithEmailAndPassword(email: email, password: password);
-    }on FirebaseAuthException catch(err){
-      throw '${err.message}';
+      await dio.post(login,data: map);
+    }on DioException catch(err){
+      throw ApiException(err).errorMessage;
     }
   }
 
 
-  Future<void> userSignUp ({
-    required String username, required String email,
-    required String password, required XFile image,required int phone
-  }) async{
-    try{
-      CloudinaryResponse response = await CloudinaryRepository.uploadImageOrFile(File(image.path));
-      final credential = await FirebaseInstances.fireAuth.createUserWithEmailAndPassword(email: email, password: password);
-      await FirebaseInstances.userDb.doc(credential.user!.uid).set({
-       'username': username,
-       'email': email,
-        'phone': phone,
-        'image': response.secure_url,
-        'public_id': response.public_id,
-        'role': 'user'
-     });
-    }on FirebaseAuthException catch(err){
-      throw '${err.message}';
-    }catch(err){
-      print(err);
-      throw '$err';
-    }
-  }
 
-  static Future<void> userSignOut () async{
-    try{
-      await FirebaseInstances.fireAuth.signOut();
-    }on FirebaseAuthException catch(err){
-      throw '${err.message}';
-    }
+Future<void> userRegister (Map<String,dynamic>map) async{
+  try{
+    await dio.post(register,data: map);
+  }on DioException catch(err){
+    throw ApiException(err).errorMessage;
   }
-  
+}
 }
 
 
 @riverpod
 AuthRepository  authRepo(Ref ref) {
-  return AuthRepository();
+  return AuthRepository(ref.watch(clientProvider));
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_proj/features/authentication/data/auth_repository.dart' show AuthRepository;
 import 'package:flutter_proj/features/home/presentation/controllers/user_controller.dart';
 import 'package:flutter_proj/routes/route_enums.dart' show AppRoute;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -49,7 +48,6 @@ class DrawerWidget extends ConsumerWidget {
 
                 ListTile(
                   onTap: (){
-                    AuthRepository.userSignOut();
                   },
                   leading: Icon(Icons.exit_to_app),
                   title: const Text('Sign Out'),
