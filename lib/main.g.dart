@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_repository.dart';
+part of 'main.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$authRepoHash() => r'991ccf4f2a63fba8e2338b643b013a40d5de2cee';
+String _$hiveBoxHash() => r'773d91389aa94960522895613a3664109910d527';
 
-/// See also [authRepo].
-@ProviderFor(authRepo)
-final authRepoProvider = AutoDisposeProvider<AuthRepository>.internal(
-  authRepo,
-  name: r'authRepoProvider',
+/// See also [hiveBox].
+@ProviderFor(hiveBox)
+final hiveBoxProvider = AutoDisposeProvider<Box>.internal(
+  hiveBox,
+  name: r'hiveBoxProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$authRepoHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$hiveBoxHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef AuthRepoRef = AutoDisposeProviderRef<AuthRepository>;
+typedef HiveBoxRef = AutoDisposeProviderRef<Box>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
