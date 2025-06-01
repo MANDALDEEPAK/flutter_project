@@ -1,28 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_controller.dart';
+part of 'product_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userProfileStreamHash() => r'16704a8eaf47c55efbb7e35a9b9ba7196ccba963';
+String _$getProductsHash() => r'3b697f1012e33df03c316ae139692a2ada4f8381';
 
-/// See also [userProfileStream].
-@ProviderFor(userProfileStream)
-final userProfileStreamProvider = AutoDisposeStreamProvider<UserData>.internal(
-  userProfileStream,
-  name: r'userProfileStreamProvider',
+/// See also [getProducts].
+@ProviderFor(getProducts)
+final getProductsProvider = AutoDisposeFutureProvider<List<Product>>.internal(
+  getProducts,
+  name: r'getProductsProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$userProfileStreamHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$getProductsHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef UserProfileStreamRef = AutoDisposeStreamProviderRef<UserData>;
+typedef GetProductsRef = AutoDisposeFutureProviderRef<List<Product>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -22,11 +22,13 @@ ApiException(this.exception);
           case 400:
             return '${exception.response}';
           case 401:
-            return 'Unauthorized – Authentication is required and has failed or has not yet been provided.';
+            return
+              exception.response?.data['message'] ??
+                  'Unauthorized – Authentication is required and has failed or has not yet been provided.';
           case 403:
             return 'Forbidden – You do not have permission to access this resource.';
           case 404:
-            return 'Not Found – The requested resource could not be found on the server.';
+            return exception.response?.data['message'] ??'Not Found – The requested resource could not be found on the server.';
           case 405:
             return 'Method Not Allowed – The request method is known by the server but is not supported by the target resource.';
           case 413:

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_proj/core/app_theme/app_sizes.dart' show AppSizes;
-import 'package:flutter_proj/features/authentication/presentaion/controllers/sign_up_provider.dart';
-import 'package:flutter_proj/features/shared/validator_provider.dart' show passControllerProvider, validateModeControllerProvider;
+import 'package:flutter_proj/core/app_theme/app_sizes.dart';
+import 'package:flutter_proj/features/shared/validator_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 
+import 'controllers/sign_up_provider.dart';
 
 
 class SignUp extends ConsumerStatefulWidget {
@@ -73,23 +73,6 @@ class _SignUpState extends ConsumerState<SignUp> {
                 AppSizes.gapH16,
 
                 FormBuilderTextField(
-                  inputFormatters: [
-                    LengthLimitingTextInputFormatter(10)
-                  ],
-                  name: 'phone',
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                      hintText: 'Phone'
-                  ),
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.minLength(10),
-                    FormBuilderValidators.required(),
-
-                  ]),
-                ),
-                AppSizes.gapH16,
-
-                FormBuilderTextField(
                   name: 'password',
                   keyboardType: TextInputType.emailAddress,
                   obscureText: passShow ? false : true,
@@ -106,10 +89,18 @@ class _SignUpState extends ConsumerState<SignUp> {
                   ]),
                 ),
                 AppSizes.gapH20,
+
                 AppSizes.gapH20,
                 ElevatedButton(
                     onPressed: signUpState.isLoading ? null: (){
                       FocusScope.of(context).unfocus();
+                      if(_formKey.currentState!.saveAndValidate(focusOnInvalid: false)){
+                        final map = _formKey.currentState!.value;
+                        ref.read(signUpControllerProvider.notifier).userSignUp(map);
+
+                      }else{
+                        ref.read(validateModeControllerProvider(id: 2).notifier).change();
+                      }
                     }, child: signUpState.isLoading ? CircularProgressIndicator(): Text('Submit')),
                 AppSizes.gapH16,
                 Row(

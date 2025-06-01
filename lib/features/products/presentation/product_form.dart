@@ -1,44 +1,40 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_proj/core/app_theme/app_sizes.dart' show AppSizes;
-import 'package:flutter_proj/features/books/presentation/controllers/book_controller.dart';
-import 'package:flutter_proj/features/shared/file_provider.dart';
+import 'package:flutter_proj/core/app_theme/app_sizes.dart';
 import 'package:flutter_proj/features/shared/image_provider.dart';
-import 'package:flutter_proj/features/shared/validator_provider.dart' show validateModeControllerProvider;
+import 'package:flutter_proj/features/shared/validator_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:go_router/go_router.dart';
 
-class BookForm extends ConsumerStatefulWidget {
-  const BookForm({super.key});
+
+class ProductForm extends ConsumerStatefulWidget {
+  const ProductForm({super.key});
 
   @override
-  ConsumerState createState() => _BookFormState();
+  ConsumerState createState() => _ProductFormState();
 }
 
-class _BookFormState extends ConsumerState<BookForm> {
+class _ProductFormState extends ConsumerState<ProductForm> {
   final _formKey = GlobalKey<FormBuilderState>();
   @override
   Widget build(BuildContext context) {
 
-    ref.listen(bookControllerProvider, (prev, next){
-       next.maybeWhen(
-         data: (data){
-           context.pop();
-         },
-           error: (err, st) =>
-               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                 content: Text(err.toString()),
+    // ref.listen(bookControllerProvider, (prev, next){
+    //    next.maybeWhen(
+    //      data: (data){
+    //        context.pop();
+    //      },
+    //        error: (err, st) =>
+    //            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    //              content: Text(err.toString()),
+    //
+    //        )),
+    //        orElse: () => null
+    //    );
+    // });
 
-           )),
-           orElse: () => null
-       );
-    });
-
-    final file = ref.watch(fileControllerProvider);
     final image = ref.watch(imageControllerProvider);
-    final bookState = ref.watch(bookControllerProvider);
     final mode = ref.watch(validateModeControllerProvider(id: 3));
     return Scaffold(
       appBar: AppBar(
@@ -138,49 +134,25 @@ class _BookFormState extends ConsumerState<BookForm> {
                 ),
                 AppSizes.gapH16,
                 AppSizes.gapH16,
-              InkWell(
-                  onTap: (){
-                    ref.read(fileControllerProvider.notifier).pickFile();
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black)
-                    ),
-                    height: 50,
-                    child: Center(child: Text(file == null ? 'Select File' : file.path)),
-                  )
-              ),
-                AppSizes.gapH16,
-                AppSizes.gapH16,
+
 
                 ElevatedButton(
-                    onPressed: bookState.isLoading ? null: (){
+                    onPressed:
+                    // bookState.isLoading ? null:
+                        (){
                   if(_formKey.currentState!.saveAndValidate(focusOnInvalid: false)){
                     final map = _formKey.currentState!.value;
-                    if(file != null && image != null){
-                      ref.read(bookControllerProvider.notifier).addBook(
-                          file: file,
-                          image: image,
-                          title:map['title'],
-                          genre: map['genre'],
-                          price: int.parse(map['price']),
-                          publisher:  map['publisher'],
-                          author: map['author'],
-                        description: map['description']
-                      );
-                    }else{
-                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          duration: Duration(seconds: 1),
-                          content: Text('Please Select an Image And File')));
-                    }
+
                   }else{
                     ref.read(validateModeControllerProvider(id: 3).notifier).change();
                   }
 
 
 
-                }, child: bookState.isLoading ? Center(child: CircularProgressIndicator()): Text('Submit'))
+                }, child:
+                // bookState.isLoading ? Center(child: CircularProgressIndicator())
+                //     :
+                Text('Submit'))
 
               ],
             )
