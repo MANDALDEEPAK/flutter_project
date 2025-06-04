@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_proj/features/products/presentation/product_list.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -14,7 +15,11 @@ class HomePage extends StatelessWidget {
      // drawer: DrawerWidget(),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: Container()
+        child: ListView(
+          children: [
+            ProductList()
+          ],
+        ),
       ),
     );
   }

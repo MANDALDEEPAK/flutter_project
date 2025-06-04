@@ -8,12 +8,13 @@ class Product with _$Product {
 
   const factory Product({
     required String title,
-    required String description,
-    required int price,
-    required String image,
-    required int rating,
-    required String category,
-    required String brand,
+    @JsonKey(name: '_id') @Default('') String id,
+    @Default('') String description,
+    @Default(0) int price,
+    @Default('') String image,
+    @Default(0) int rating,
+    @Default('') String category,
+    @Default('') String brand,
 }) = _Product;
 
   factory Product.fromJson(Map<String, dynamic> json) =>
