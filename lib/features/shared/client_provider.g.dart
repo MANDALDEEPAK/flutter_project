@@ -22,5 +22,21 @@ final clientProvider = AutoDisposeProvider<Dio>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef ClientRef = AutoDisposeProviderRef<Dio>;
+String _$authClientHash() => r'e7178bd1b771fc6eeaf8e532e757fd606f2073a6';
+
+/// See also [authClient].
+@ProviderFor(authClient)
+final authClientProvider = AutoDisposeProvider<Dio>.internal(
+  authClient,
+  name: r'authClientProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$authClientHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef AuthClientRef = AutoDisposeProviderRef<Dio>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -4,7 +4,6 @@ import 'package:flutter_proj/core/exception/api_exception.dart';
 import 'package:flutter_proj/features/authentication/domain/user.dart';
 import 'package:flutter_proj/features/shared/client_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_proj/routes/app_routes.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'features/carts/domain/cart.dart';
 import 'firebase_options.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -15,6 +16,11 @@ Box hiveBox(Ref ref) {
   throw UnimplementedError();
 }
 
+@riverpod
+List<Cart> cartBox (Ref ref) {
+  throw UnimplementedError();
+}
+
 void main  () async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -22,10 +28,13 @@ void main  () async{
   );
 
   await Hive.initFlutter();
+   Hive.registerAdapter(CartAdapter());
   final bxData = await Hive.openBox('box');
+  final cartData = await Hive.openBox<Cart>('carts');
   runApp(ProviderScope(
       overrides: [
         hiveBoxProvider.overrideWithValue(bxData),
+        cartBoxProvider.overrideWithValue(cartData.values.toList()),
       ],
       child: const Main()));
 }

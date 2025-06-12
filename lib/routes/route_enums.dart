@@ -7,4 +7,8 @@ enum AppRoute{
   signup,
   profile,
   admin,
+  productAdd,
+  productEdit,
+  productDetail,
+  cart
 }

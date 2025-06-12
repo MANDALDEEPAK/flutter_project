@@ -34,7 +34,9 @@ abstract class _$ValidateModeController
     extends BuildlessAutoDisposeNotifier<AutovalidateMode> {
   late final int id;
 
-  AutovalidateMode build({required int id});
+  AutovalidateMode build({
+    required int id,
+  });
 }
 
 /// See also [ValidateModeController].
@@ -47,15 +49,21 @@ class ValidateModeControllerFamily extends Family<AutovalidateMode> {
   const ValidateModeControllerFamily();
 
   /// See also [ValidateModeController].
-  ValidateModeControllerProvider call({required int id}) {
-    return ValidateModeControllerProvider(id: id);
+  ValidateModeControllerProvider call({
+    required int id,
+  }) {
+    return ValidateModeControllerProvider(
+      id: id,
+    );
   }
 
   @override
   ValidateModeControllerProvider getProviderOverride(
     covariant ValidateModeControllerProvider provider,
   ) {
-    return call(id: provider.id);
+    return call(
+      id: provider.id,
+    );
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,27 +82,24 @@ class ValidateModeControllerFamily extends Family<AutovalidateMode> {
 }
 
 /// See also [ValidateModeController].
-class ValidateModeControllerProvider
-    extends
-        AutoDisposeNotifierProviderImpl<
-          ValidateModeController,
-          AutovalidateMode
-        > {
+class ValidateModeControllerProvider extends AutoDisposeNotifierProviderImpl<
+    ValidateModeController, AutovalidateMode> {
   /// See also [ValidateModeController].
-  ValidateModeControllerProvider({required int id})
-    : this._internal(
-        () => ValidateModeController()..id = id,
-        from: validateModeControllerProvider,
-        name: r'validateModeControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$validateModeControllerHash,
-        dependencies: ValidateModeControllerFamily._dependencies,
-        allTransitiveDependencies:
-            ValidateModeControllerFamily._allTransitiveDependencies,
-        id: id,
-      );
+  ValidateModeControllerProvider({
+    required int id,
+  }) : this._internal(
+          () => ValidateModeController()..id = id,
+          from: validateModeControllerProvider,
+          name: r'validateModeControllerProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$validateModeControllerHash,
+          dependencies: ValidateModeControllerFamily._dependencies,
+          allTransitiveDependencies:
+              ValidateModeControllerFamily._allTransitiveDependencies,
+          id: id,
+        );
 
   ValidateModeControllerProvider._internal(
     super._createNotifier, {
@@ -109,8 +114,12 @@ class ValidateModeControllerProvider
   final int id;
 
   @override
-  AutovalidateMode runNotifierBuild(covariant ValidateModeController notifier) {
-    return notifier.build(id: id);
+  AutovalidateMode runNotifierBuild(
+    covariant ValidateModeController notifier,
+  ) {
+    return notifier.build(
+      id: id,
+    );
   }
 
   @override
@@ -131,7 +140,7 @@ class ValidateModeControllerProvider
 
   @override
   AutoDisposeNotifierProviderElement<ValidateModeController, AutovalidateMode>
-  createElement() {
+      createElement() {
     return _ValidateModeControllerProviderElement(this);
   }
 
@@ -158,12 +167,8 @@ mixin ValidateModeControllerRef
 }
 
 class _ValidateModeControllerProviderElement
-    extends
-        AutoDisposeNotifierProviderElement<
-          ValidateModeController,
-          AutovalidateMode
-        >
-    with ValidateModeControllerRef {
+    extends AutoDisposeNotifierProviderElement<ValidateModeController,
+        AutovalidateMode> with ValidateModeControllerRef {
   _ValidateModeControllerProviderElement(super.provider);
 
   @override
@@ -175,7 +180,9 @@ String _$passControllerHash() => r'625cf9ae6645eca7522904a8a455203f0eb68f58';
 abstract class _$PassController extends BuildlessAutoDisposeNotifier<bool> {
   late final int id;
 
-  bool build({required int id});
+  bool build({
+    required int id,
+  });
 }
 
 /// See also [PassController].
@@ -188,15 +195,21 @@ class PassControllerFamily extends Family<bool> {
   const PassControllerFamily();
 
   /// See also [PassController].
-  PassControllerProvider call({required int id}) {
-    return PassControllerProvider(id: id);
+  PassControllerProvider call({
+    required int id,
+  }) {
+    return PassControllerProvider(
+      id: id,
+    );
   }
 
   @override
   PassControllerProvider getProviderOverride(
     covariant PassControllerProvider provider,
   ) {
-    return call(id: provider.id);
+    return call(
+      id: provider.id,
+    );
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -218,20 +231,21 @@ class PassControllerFamily extends Family<bool> {
 class PassControllerProvider
     extends AutoDisposeNotifierProviderImpl<PassController, bool> {
   /// See also [PassController].
-  PassControllerProvider({required int id})
-    : this._internal(
-        () => PassController()..id = id,
-        from: passControllerProvider,
-        name: r'passControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$passControllerHash,
-        dependencies: PassControllerFamily._dependencies,
-        allTransitiveDependencies:
-            PassControllerFamily._allTransitiveDependencies,
-        id: id,
-      );
+  PassControllerProvider({
+    required int id,
+  }) : this._internal(
+          () => PassController()..id = id,
+          from: passControllerProvider,
+          name: r'passControllerProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$passControllerHash,
+          dependencies: PassControllerFamily._dependencies,
+          allTransitiveDependencies:
+              PassControllerFamily._allTransitiveDependencies,
+          id: id,
+        );
 
   PassControllerProvider._internal(
     super._createNotifier, {
@@ -246,8 +260,12 @@ class PassControllerProvider
   final int id;
 
   @override
-  bool runNotifierBuild(covariant PassController notifier) {
-    return notifier.build(id: id);
+  bool runNotifierBuild(
+    covariant PassController notifier,
+  ) {
+    return notifier.build(
+      id: id,
+    );
   }
 
   @override
@@ -300,6 +318,5 @@ class _PassControllerProviderElement
   @override
   int get id => (origin as PassControllerProvider).id;
 }
-
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

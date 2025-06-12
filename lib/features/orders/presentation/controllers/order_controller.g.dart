@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'image_provider.dart';
+part of 'order_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$imageControllerHash() => r'4220124ac646ace95e63ca0842a5eefbb687304f';
+String _$orderControllerHash() => r'07ad5b3d2d497ae189aa5f6fd5093c4f17df7024';
 
-/// See also [ImageController].
-@ProviderFor(ImageController)
-final imageControllerProvider =
-    AutoDisposeNotifierProvider<ImageController, XFile?>.internal(
-  ImageController.new,
-  name: r'imageControllerProvider',
+/// See also [OrderController].
+@ProviderFor(OrderController)
+final orderControllerProvider =
+    AutoDisposeAsyncNotifierProvider<OrderController, void>.internal(
+  OrderController.new,
+  name: r'orderControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$imageControllerHash,
+      : _$orderControllerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$ImageController = AutoDisposeNotifier<XFile?>;
+typedef _$OrderController = AutoDisposeAsyncNotifier<void>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

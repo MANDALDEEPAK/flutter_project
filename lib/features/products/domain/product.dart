@@ -8,7 +8,7 @@ class Product with _$Product {
 
   const factory Product({
     required String title,
-    @JsonKey(name: '_id') @Default('') String id,
+    @JsonKey(name: '_id') @Default('')  String id,
     @Default('') String description,
     @Default(0) int price,
     @Default('') String image,

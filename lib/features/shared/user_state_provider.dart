@@ -22,9 +22,11 @@ class UserStateProvider extends _$UserStateProvider {
     state = user;
   }
 
-void removeUser(){
+  void removeUser() {
     Hive.box('box').delete('user');
     state = User.empty();
-}
+  }
+
+
 
 }
