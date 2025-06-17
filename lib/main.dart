@@ -7,7 +7,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'features/carts/domain/cart.dart';
 import 'firebase_options.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 part 'main.g.dart';
 
 
@@ -26,7 +26,8 @@ void main  () async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
+  OneSignal.initialize("4f29cc49-37be-4feb-918f-e9a70b1ea66f");
+  OneSignal.Notifications.requestPermission(true);
   await Hive.initFlutter();
    Hive.registerAdapter(CartAdapter());
   final bxData = await Hive.openBox('box');

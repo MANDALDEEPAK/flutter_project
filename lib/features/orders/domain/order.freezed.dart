@@ -24,6 +24,7 @@ mixin _$Order {
   String get id => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
   int get totalAmount => throw _privateConstructorUsedError;
+  String get createdAt => throw _privateConstructorUsedError;
   List<OrderItem> get orderItems => throw _privateConstructorUsedError;
 
   /// Serializes this Order to a JSON map.
@@ -44,6 +45,7 @@ abstract class $OrderCopyWith<$Res> {
       {@JsonKey(name: '_id') String id,
       String userId,
       int totalAmount,
+      String createdAt,
       List<OrderItem> orderItems});
 }
 
@@ -65,6 +67,7 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? id = null,
     Object? userId = null,
     Object? totalAmount = null,
+    Object? createdAt = null,
     Object? orderItems = null,
   }) {
     return _then(_value.copyWith(
@@ -80,6 +83,10 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
               as int,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
       orderItems: null == orderItems
           ? _value.orderItems
           : orderItems // ignore: cast_nullable_to_non_nullable
@@ -99,6 +106,7 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
       {@JsonKey(name: '_id') String id,
       String userId,
       int totalAmount,
+      String createdAt,
       List<OrderItem> orderItems});
 }
 
@@ -118,6 +126,7 @@ class __$$OrderImplCopyWithImpl<$Res>
     Object? id = null,
     Object? userId = null,
     Object? totalAmount = null,
+    Object? createdAt = null,
     Object? orderItems = null,
   }) {
     return _then(_$OrderImpl(
@@ -133,6 +142,10 @@ class __$$OrderImplCopyWithImpl<$Res>
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
               as int,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
       orderItems: null == orderItems
           ? _value._orderItems
           : orderItems // ignore: cast_nullable_to_non_nullable
@@ -148,7 +161,8 @@ class _$OrderImpl implements _Order {
       {@JsonKey(name: '_id') this.id = '',
       required this.userId,
       required this.totalAmount,
-      required final List<OrderItem> orderItems})
+      required this.createdAt,
+      final List<OrderItem> orderItems = const []})
       : _orderItems = orderItems;
 
   factory _$OrderImpl.fromJson(Map<String, dynamic> json) =>
@@ -161,8 +175,11 @@ class _$OrderImpl implements _Order {
   final String userId;
   @override
   final int totalAmount;
+  @override
+  final String createdAt;
   final List<OrderItem> _orderItems;
   @override
+  @JsonKey()
   List<OrderItem> get orderItems {
     if (_orderItems is EqualUnmodifiableListView) return _orderItems;
     // ignore: implicit_dynamic_type
@@ -171,7 +188,7 @@ class _$OrderImpl implements _Order {
 
   @override
   String toString() {
-    return 'Order(id: $id, userId: $userId, totalAmount: $totalAmount, orderItems: $orderItems)';
+    return 'Order(id: $id, userId: $userId, totalAmount: $totalAmount, createdAt: $createdAt, orderItems: $orderItems)';
   }
 
   @override
@@ -183,6 +200,8 @@ class _$OrderImpl implements _Order {
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.totalAmount, totalAmount) ||
                 other.totalAmount == totalAmount) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             const DeepCollectionEquality()
                 .equals(other._orderItems, _orderItems));
   }
@@ -190,7 +209,7 @@ class _$OrderImpl implements _Order {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, userId, totalAmount,
-      const DeepCollectionEquality().hash(_orderItems));
+      createdAt, const DeepCollectionEquality().hash(_orderItems));
 
   /// Create a copy of Order
   /// with the given fields replaced by the non-null parameter values.
@@ -213,7 +232,8 @@ abstract class _Order implements Order {
       {@JsonKey(name: '_id') final String id,
       required final String userId,
       required final int totalAmount,
-      required final List<OrderItem> orderItems}) = _$OrderImpl;
+      required final String createdAt,
+      final List<OrderItem> orderItems}) = _$OrderImpl;
 
   factory _Order.fromJson(Map<String, dynamic> json) = _$OrderImpl.fromJson;
 
@@ -224,6 +244,8 @@ abstract class _Order implements Order {
   String get userId;
   @override
   int get totalAmount;
+  @override
+  String get createdAt;
   @override
   List<OrderItem> get orderItems;
 
@@ -245,7 +267,7 @@ mixin _$OrderItem {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   int get qty => throw _privateConstructorUsedError;
-  String get price => throw _privateConstructorUsedError;
+  int get price => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
 
   /// Serializes this OrderItem to a JSON map.
@@ -267,7 +289,7 @@ abstract class $OrderItemCopyWith<$Res> {
       {@JsonKey(name: '_id') String id,
       String title,
       int qty,
-      String price,
+      int price,
       String image});
 }
 
@@ -308,7 +330,7 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -329,7 +351,7 @@ abstract class _$$OrderItemImplCopyWith<$Res>
       {@JsonKey(name: '_id') String id,
       String title,
       int qty,
-      String price,
+      int price,
       String image});
 }
 
@@ -368,7 +390,7 @@ class __$$OrderItemImplCopyWithImpl<$Res>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -398,7 +420,7 @@ class _$OrderItemImpl implements _OrderItem {
   @override
   final int qty;
   @override
-  final String price;
+  final int price;
   @override
   final String image;
 
@@ -444,7 +466,7 @@ abstract class _OrderItem implements OrderItem {
       {@JsonKey(name: '_id') final String id,
       required final String title,
       required final int qty,
-      required final String price,
+      required final int price,
       required final String image}) = _$OrderItemImpl;
 
   factory _OrderItem.fromJson(Map<String, dynamic> json) =
@@ -458,7 +480,7 @@ abstract class _OrderItem implements OrderItem {
   @override
   int get qty;
   @override
-  String get price;
+  int get price;
   @override
   String get image;
 

@@ -10,5 +10,7 @@ enum AppRoute{
   productAdd,
   productEdit,
   productDetail,
-  cart
+  cart,
+  order,
+  orderDetail
 }

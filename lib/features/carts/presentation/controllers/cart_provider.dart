@@ -11,7 +11,8 @@ part 'cart_provider.g.dart';
 class CartController extends _$CartController {
   @override
   List<Cart> build() {
-    return ref.watch(cartBoxProvider);
+    final box = ref.watch(cartBoxProvider);
+    return box;
   }
 
   void addToCart(Product product){
@@ -58,6 +59,8 @@ class CartController extends _$CartController {
   void clearCart(){
     state = [];
     Hive.box<Cart>('carts').clear();
+    ref.read(cartBoxProvider).clear();
+
   }
 
   int get totalAmount{

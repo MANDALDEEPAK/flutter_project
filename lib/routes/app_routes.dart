@@ -5,6 +5,8 @@ import 'package:flutter_proj/features/authentication/presentaion/login.dart';
 import 'package:flutter_proj/features/authentication/presentaion/sign_up.dart';
 import 'package:flutter_proj/features/carts/presentation/cart_page.dart';
 import 'package:flutter_proj/features/home/presentation/home_page.dart';
+import 'package:flutter_proj/features/orders/presentation/order_detail.dart';
+import 'package:flutter_proj/features/orders/presentation/order_page.dart';
 import 'package:flutter_proj/features/products/domain/product.dart';
 import 'package:flutter_proj/features/products/presentation/product_detail.dart';
 import 'package:flutter_proj/features/shared/user_state_provider.dart';
@@ -52,6 +54,24 @@ GoRouter  router(Ref ref) {
             pageBuilder: (context, state){
               return NoTransitionPage(child: CartPage());
             }
+        ),
+
+        GoRoute(
+            path: '/order',
+            name: AppRoute.order.name,
+            pageBuilder: (context, state){
+              return NoTransitionPage(child: const OrderPage());
+            },
+
+          routes: [
+            GoRoute(
+                path: 'order-detail',
+                name: AppRoute.orderDetail.name,
+                pageBuilder: (context, state){
+                  return NoTransitionPage(child: OrderDetail(orderId: state.extra as String));
+                }
+            ),
+          ]
         ),
 
         GoRoute(

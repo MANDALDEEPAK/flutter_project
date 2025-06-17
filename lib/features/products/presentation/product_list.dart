@@ -1,10 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_proj/core/api.dart';
-import 'package:flutter_proj/features/products/presentation/controllers/product_controller.dart';
 import 'package:flutter_proj/routes/route_enums.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
+import 'controllers/product_controller.dart';
 
 
 class ProductList extends ConsumerWidget {

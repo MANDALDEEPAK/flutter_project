@@ -40,6 +40,14 @@ class DrawerWidget extends ConsumerWidget {
               context.pushNamed(AppRoute.admin.name);
             },
           ),
+
+          ListTile(
+            leading: const Icon(Icons.reorder),
+            title: const Text('Orders'),
+            onTap: () {
+              context.pushNamed(AppRoute.order.name);
+            },
+          ),
           ListTile(
             leading: const Icon(Icons.logout),
             title: const Text('Logout'),

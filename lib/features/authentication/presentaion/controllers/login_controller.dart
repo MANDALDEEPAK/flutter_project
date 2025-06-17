@@ -1,4 +1,3 @@
-
 import 'package:flutter_proj/features/authentication/data/auth_repository.dart';
 import 'package:flutter_proj/features/shared/user_state_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

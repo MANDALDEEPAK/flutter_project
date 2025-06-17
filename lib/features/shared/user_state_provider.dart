@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter_proj/features/authentication/domain/user.dart';
 import 'package:flutter_proj/main.dart';
 import 'package:hive_flutter/hive_flutter.dart';

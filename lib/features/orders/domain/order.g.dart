@@ -10,9 +10,11 @@ _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
       id: json['_id'] as String? ?? '',
       userId: json['userId'] as String,
       totalAmount: (json['totalAmount'] as num).toInt(),
-      orderItems: (json['orderItems'] as List<dynamic>)
-          .map((e) => OrderItem.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      createdAt: json['createdAt'] as String,
+      orderItems: (json['orderItems'] as List<dynamic>?)
+              ?.map((e) => OrderItem.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
@@ -20,6 +22,7 @@ Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
       '_id': instance.id,
       'userId': instance.userId,
       'totalAmount': instance.totalAmount,
+      'createdAt': instance.createdAt,
       'orderItems': instance.orderItems,
     };
 
@@ -28,7 +31,7 @@ _$OrderItemImpl _$$OrderItemImplFromJson(Map<String, dynamic> json) =>
       id: json['_id'] as String? ?? '',
       title: json['title'] as String,
       qty: (json['qty'] as num).toInt(),
-      price: json['price'] as String,
+      price: (json['price'] as num).toInt(),
       image: json['image'] as String,
     );
 
